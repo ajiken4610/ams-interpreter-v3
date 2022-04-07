@@ -135,12 +135,23 @@ declare class VariableMap<T> {
    */
   public get(name: string): T;
   /**
-   *
-   * @param name
-   * @param value
+   * 親スコープに変数が既にあればそこに、無ければ自分自身に、変数の値を代入します。
+   * @param name 代入する変数名
+   * @param value 代入する値
    */
   public set(name: string, value: T): void;
+  /**
+   * 親スコープにすでに変数が存在するかしないかにかかわらず、現在のスコープに値を代入します。
+   * @param name 代入する変数名
+   * @param value 代入する値
+   */
   public setAsOwn(name: string, value: T): void;
+  /**
+   * 内部で保持しているマップオブジェクトを取得します。
+   */
   private getMap(): {};
+  /**
+   * このインスタンスの文字列表現を取得します。
+   */
   public toString(): string;
 }
