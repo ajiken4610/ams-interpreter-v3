@@ -62,3 +62,35 @@ declare class StringIterator implements Iterator<string> {
    */
   public [Symbol.iterator](): StringIterator;
 }
+
+/**
+ * このクラスは、インポートされた名前空間を表します。
+ */
+declare class ImportedNamespace {
+  /**
+   *インポートされた名前空間
+   *
+   * @type {string[]}
+   * @memberof ImportedNamespace
+   */
+  public importeds: string[];
+  /**
+   * ImportedNamespaceをあれば親スコープから初期化します。
+   * @param parent あれば親スコープ
+   * @param hasGrammerImport 名前空間"ams.grammer"をインポートする場合はtrue、しない場合はfalse
+   */
+  public constructor(parent?: ImportedNamespace, hasGrammerImport?: boolean);
+  /**
+   * 子スコープを生成して返します。
+   */
+  public newScope(): ImportedNamespace;
+  /**
+   * インポートされた名前空間を追加します。
+   * @param newNamespace
+   */
+  public add(newNamespace: string);
+  /**
+   * インポートされた名前空間を優先度順に並べたイテレータを返します。
+   */
+  public iterator(): string[];
+}
