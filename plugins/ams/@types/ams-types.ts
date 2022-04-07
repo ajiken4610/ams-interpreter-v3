@@ -183,3 +183,12 @@ declare class NamespacedVariable<T> extends VariableMap<T> {
   public guessNamespace(name: string): string;
   public getNamespaced(combined: string): T;
 }
+
+declare class ReservedWord {
+  static NEST;
+  static NEST_START;
+  static NEST_END;
+  static VARIABLE;
+  static INVOKER;
+  static SEPARATOR;
+}
