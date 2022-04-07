@@ -94,3 +94,53 @@ declare class ImportedNamespace {
    */
   public iterator(): string[];
 }
+
+/**
+ * 変数のマップを表します。
+ */
+declare class VariableMap<T> {
+  /**
+   * マップからオブジェクトを初期化して返します。
+   * @param map
+   */
+  public static fromMap<T>(map: { [key: string]: T });
+
+  /**
+   * 親スコープがあればそのVariableMap,なければnull
+   *
+   * @private
+   * @type {(VariableMap<T> | null)}
+   * @memberof VariableMap
+   */
+  private parent: VariableMap<T> | null;
+
+  /**
+   * あれば親のスコープからインスタンスを初期化します。
+   * @param parent 親スコープ
+   */
+  public constructor(parent?: VariableMap<T>);
+  /**
+   * 新しい子スコープを返します。
+   */
+  public newScope(): VariableMap<T>;
+  /**
+   * 変数マップがその名前の変数を持つか調べます。
+   * @param name 調べる変数の名前
+   * @return　あるならtrue、ないならfalse。
+   */
+  public has(name: string): boolean;
+  /**
+   * 変数マップから指定された名前の変数の値を取得して返します。
+   * @param name 取得する変数の名前
+   */
+  public get(name: string): T;
+  /**
+   *
+   * @param name
+   * @param value
+   */
+  public set(name: string, value: T): void;
+  public setAsOwn(name: string, value: T): void;
+  private getMap(): {};
+  public toString(): string;
+}
