@@ -155,3 +155,31 @@ declare class VariableMap<T> {
    */
   public toString(): string;
 }
+
+/**
+ * 名前空間付きの変数マップを表します。
+ */
+declare class NamespacedVariable<T> extends VariableMap<T> {
+  protected namespacecVariableMaps: { [key: string]: VariableMap<T> };
+  protected imported: ImportedNamespace;
+  public constructor(
+    namespace?: ImportedNamespace,
+    parent?: NamespacedVariable<T>
+  );
+  public addNamespacedVariableMap(
+    spaceName: string,
+    variables: VariableMap<T>
+  ): void;
+  public addNamespacedVariableMaps(spaces: { [key: string]: VariableMap<T> });
+  public get(name: string): T;
+  public has(name: string): boolean;
+  public set(name: string, value: T): void;
+  public newScope(): NamespacedVariable<T>;
+  public addImport(namespace: string): void;
+  public static separateNamespaced(name: string): {
+    namespace: string | null;
+    name: string;
+  };
+  public guessNamespace(name: string): string;
+  public getNamespaced(combined: string): T;
+}
