@@ -383,9 +383,26 @@ declare abstract class Invokable {
   ): HtmlObject;
 }
 
+/**
+ * スタックとレースを表します。
+ */
 declare class StackTrace {
+  /**
+   * スタックの位置を表します。
+   *
+   * @private
+   * @type {((string | number)[])}
+   * @memberof StackTrace
+   */
   private position: (string | number)[];
+  /**
+   * スタックの位置を表す配列からインスタンスを初期化します。
+   * @param position
+   */
   public constructor(position: (string | number)[]);
+  /**
+   * インスタンスの文字列表現を返します。
+   */
   public toString(): string;
 }
 
