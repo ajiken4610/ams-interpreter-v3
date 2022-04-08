@@ -223,3 +223,10 @@ declare class StackTrace {
   public constructor(position: (string | number)[]);
   public toString(): string;
 }
+
+declare abstract class StopInvokable extends Invokable {
+  protected stackTraces: StackTrace[];
+  public addStackTrace(stackTrace: StackTrace): void;
+  public getTraceString(): string;
+  public abstract getStopId(): string;
+}
