@@ -160,27 +160,89 @@ declare class VariableMap<T> {
  * 名前空間付きの変数マップを表します。
  */
 declare class NamespacedVariable<T> extends VariableMap<T> {
+  /**
+   * 名前空間がついている変数のマップ
+   *
+   * @protected
+   * @type {{ [key: string]: VariableMap<T> }}
+   * @memberof NamespacedVariable
+   */
   protected namespacecVariableMaps: { [key: string]: VariableMap<T> };
+  /**
+   * インポートされた名前空間
+   *
+   * @protected
+   * @type {ImportedNamespace}
+   * @memberof NamespacedVariable
+   */
   protected imported: ImportedNamespace;
+  /**
+   * インポートされている名前空間とあれば親スコープからインスタンスを初期化します。
+   * @param namespace インポートされている名前空間
+   * @param parent 親スコープ
+   */
   public constructor(
     namespace?: ImportedNamespace,
     parent?: NamespacedVariable<T>
   );
+  /**
+   * 新しい名前空間がついたVariablesを追加します。
+   * @param spaceName 名前空間名
+   * @param variables 変数のマップ
+   */
   public addNamespacedVariableMap(
     spaceName: string,
     variables: VariableMap<T>
   ): void;
+  /**
+   * 新しい名前空間がついたVariablesを複数追加します。
+   * @param spaces 名前空間名と名前空間変数のマップ
+   */
   public addNamespacedVariableMaps(spaces: { [key: string]: VariableMap<T> });
+  /**
+   * 変数名をもとに値を取得して返します。ローカル変数に無ければ、追加されている名前空間付き変数から探して返します。
+   * @param name
+   */
   public get(name: string): T;
+  /**
+   *  名前空間付き変数を含めて、変数が存在したらtrue,しなければfalse
+   * @param name
+   */
   public has(name: string): boolean;
+  /**
+   * ローカル変数を追加します。importという変数名の場合は、指定された値をインポートされた名前空間とします。
+   * @param name
+   * @param value
+   */
   public set(name: string, value: T): void;
+  /**
+   * 新しい子スコープを作って返します。
+   */
   public newScope(): NamespacedVariable<T>;
+  /**
+   * インポートされた名前空間を追加します。
+   * @param namespace インポートする名前空間の名前
+   */
   public addImport(namespace: string): void;
+  /**
+   * 名前空間付き変数から名前空間と変数名を分離させて、返します。名前空間がない場合は、戻り値のnamespaceがnullになります。
+   * ams.grammer.forなら、ams.grammerとforに分解されます。
+   * @param name
+   */
   public static separateNamespaced(name: string): {
     namespace: string | null;
     name: string;
   };
-  public guessNamespace(name: string): string;
+  /**
+   * インポートされている名前空間をもとに、変数名から名前空間を推論します。
+   * 名前空間が見つからない場合はnullを返します。
+   * @param name 推論する変数名
+   */
+  public guessNamespace(name: string): string | null;
+  /**
+   * インポートされ散る名前空間をもとに、名前空間付けされた変数を取得します。
+   * @param combined 名前空間.変数名の形の、完全限定変数名(?)。FQVNとでもいうべきなのだろうか。
+   */
   public getNamespaced(combined: string): T;
 }
 
