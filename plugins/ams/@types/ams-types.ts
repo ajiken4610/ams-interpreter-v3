@@ -107,6 +107,14 @@ declare class VariableMap<T> {
   public static fromMap<T>(map: { [key: string]: T });
 
   /**
+   * 変数のマップ
+   *
+   * @private
+   * @memberof VariableMap
+   */
+  private map;
+
+  /**
    * 親スコープがあればそのVariableMap,なければnull
    *
    * @private
