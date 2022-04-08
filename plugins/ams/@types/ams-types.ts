@@ -200,3 +200,20 @@ declare interface HtmlObject {
   value;
   children: HtmlObject[];
 }
+
+declare abstract class Invokable {
+  public static NULL: Invokable;
+  private children: Invokable[];
+  protected indenter;
+  public iterator(): IterableIterator<Invokable>;
+  public invoke(argument: Invokable, variables: VariableMap<Invokable>);
+  public getAt(index: number): Invokable | null;
+  public set(children: Invokable[]);
+  public setAt(index: number, child: Invokable);
+  public append(child: Invokable);
+  public abstract getStructureString(indentOffset?: string);
+  public abstract invokeAsPlainText(variables: VariableMap<Invokable>): string;
+  public abstract invokeAsHtmlObject(
+    variables: VariableMap<Invokable>
+  ): HtmlObject;
+}
