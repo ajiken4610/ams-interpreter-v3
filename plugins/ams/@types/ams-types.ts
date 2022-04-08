@@ -230,3 +230,14 @@ declare abstract class StopInvokable extends Invokable {
   public getTraceString(): string;
   public abstract getStopId(): string;
 }
+
+declare class Paragraph extends Invokable {
+  private notLoaded: (string | null)[];
+  public constructor(iterator: StringIterator);
+  public getAt(index: number): Invokable | null;
+  public invoke(argument: Invokable, variables: VariableMap<Invokable>);
+  public append(invokable: Invokable): void;
+  public invokeAsPlainText(variable: VariableMap<Invokable>): string;
+  public invokeAsHtmlObject(variable: VariableMap<Invokable>): HtmlObject;
+  public getStructureString(indentOffset: string);
+}
