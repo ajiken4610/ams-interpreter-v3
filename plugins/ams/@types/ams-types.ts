@@ -246,12 +246,44 @@ declare class NamespacedVariable<T> extends VariableMap<T> {
   public getNamespaced(combined: string): T;
 }
 
+/**
+ * 予約された記号を保持します。
+ */
 declare class ReservedWord {
-  static NEST;
+  /**
+   * ネストの初め文字「{」
+   *
+   * @static
+   * @memberof ReservedWord
+   */
   static NEST_START;
+  /**
+   * ネストの終わり文字「}」
+   *
+   * @static
+   * @memberof ReservedWord
+   */
   static NEST_END;
+  /**
+   * 変数分の区切り文字「\」
+   *
+   * @static
+   * @memberof ReservedWord
+   */
   static VARIABLE;
+  /**
+   * 呼び出し文の区切り文字「:」
+   *
+   * @static
+   * @memberof ReservedWord
+   */
   static INVOKER;
+  /**
+   * 文の区切り文字「;」
+   *
+   * @static
+   * @memberof ReservedWord
+   */
   static SEPARATOR;
 }
 
