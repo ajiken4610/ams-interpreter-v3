@@ -39,6 +39,7 @@ declare class StringIterator implements Iterator<string> {
   public readAll(): string;
   /**
    * 指定された文字のいずれかが示されるまで読み込み、示された文字と、その文字までの文字列を返します。
+   * 指定された文字が示される前に文字列の終端に達したとき、戻り値のdetectedプロパティはnullになります。
    * @param detect 終点の文字。2文字以上連ねることも可能。
    */
   public readBeforeChar(detect: string): { detected: string; value: string };
