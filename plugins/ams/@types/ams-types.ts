@@ -217,3 +217,9 @@ declare abstract class Invokable {
     variables: VariableMap<Invokable>
   ): HtmlObject;
 }
+
+declare class StackTrace {
+  private position: (string | number)[];
+  public constructor(position: (string | number)[]);
+  public toString(): string;
+}
