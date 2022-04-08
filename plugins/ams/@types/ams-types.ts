@@ -287,11 +287,25 @@ declare class ReservedWord {
   static SEPARATOR;
 }
 
+/**
+ * Htmlの階層構造を表すことができるインターフェース
+ */
 declare interface HtmlObject {
+  /**
+   * この要素のタグ名
+   */
   tagName: string;
+  /**
+   * この要素の属性
+   */
   attrs: { [key: string]: string };
+  /**
+   * あればこの要素のテキスト
+   */
   text?: string;
-  value;
+  /**
+   * この要素の子要素
+   */
   children: HtmlObject[];
 }
 
