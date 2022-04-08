@@ -310,17 +310,74 @@ declare interface HtmlObject {
 }
 
 declare abstract class Invokable {
+  /**
+   * NULLを示すInvokableオブジェクトです。
+   *
+   * @static
+   * @type {Invokable}
+   * @memberof Invokable
+   */
   public static NULL: Invokable;
+  /**
+   * 自分の子供の要素
+   *
+   * @private
+   * @type {Invokable[]}
+   * @memberof Invokable
+   */
   private children: Invokable[];
+  /**
+   * 構造文字列を取得する際のヒント
+   *
+   * @protected
+   * @memberof Invokable
+   */
   protected indenter;
+  /**
+   * このインスタンスのgetAtメソッドで返される値を順番に返します。
+   */
   public iterator(): IterableIterator<Invokable>;
+  /**
+   * このInvokableを呼び出します。
+   * @param argument 呼び出しの引数
+   * @param variables 呼び出し時の変数
+   */
   public invoke(argument: Invokable, variables: VariableMap<Invokable>);
+  /**
+   * 子要素をインデックスをもとに返します。
+   * @param index
+   */
   public getAt(index: number): Invokable | null;
+  /**
+   * 子要素を設定します。もともとあった子要素は削除されます。
+   * @param children
+   */
   public set(children: Invokable[]);
+  /**
+   * 指定されたインデックスに要素を設定します。
+   * @param index 要素を設定するインデックス
+   * @param child 指定する要素
+   */
   public setAt(index: number, child: Invokable);
+  /**
+   * 子供の一番最後に要素を追加します。
+   * @param child 最後に追加する要素
+   */
   public append(child: Invokable);
+  /**
+   * インスタンスの構造文字列を取得します。
+   * @param indentOffset 出力時に付けるインデント文字列。
+   */
   public abstract getStructureString(indentOffset?: string);
+  /**
+   * このインスタンスを生テキストとして呼び出します。
+   * @param variables 呼び出し時の変数
+   */
   public abstract invokeAsPlainText(variables: VariableMap<Invokable>): string;
+  /**
+   * このインスタンスをHtmlのオブジェクトとして呼び出します。
+   * @param variables 呼び出し時の変数
+   */
   public abstract invokeAsHtmlObject(
     variables: VariableMap<Invokable>
   ): HtmlObject;
