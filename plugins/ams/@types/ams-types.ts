@@ -192,3 +192,11 @@ declare class ReservedWord {
   static INVOKER;
   static SEPARATOR;
 }
+
+declare interface HtmlObject {
+  tagName: string;
+  attrs: { [key: string]: string };
+  text?: string;
+  value;
+  children: HtmlObject[];
+}
