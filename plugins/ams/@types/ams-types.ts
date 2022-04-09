@@ -24,7 +24,6 @@ declare class StringIterator implements Iterator<string> {
   public constructor(src: string);
   /**
    * イテレータの次の要素を返します。
-   * @return {done: boolean, value: string|null}
    */
   public next(): { done: true; value: string } | { done: false; value: null };
   /**
