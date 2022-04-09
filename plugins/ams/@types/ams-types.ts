@@ -434,7 +434,13 @@ declare class Paragraph extends Invokable {
   public getAt(index: number): Invokable | null;
   public invoke(argument: Invokable, variables: VariableMap<Invokable>);
   public append(invokable: Invokable): void;
-  public invokeAsPlainText(variable: VariableMap<Invokable>): string;
-  public invokeAsHtmlObject(variable: VariableMap<Invokable>): HtmlObject;
+  public invokeAsPlainText(
+    argument: Invokable,
+    variables: VariableMap<Invokable>
+  ): string;
+  public invokeAsHtmlObject(
+    argument: Invokable,
+    variables: VariableMap<Invokable>
+  ): HtmlObject;
   public getStructureString(indentOffset: string);
 }
