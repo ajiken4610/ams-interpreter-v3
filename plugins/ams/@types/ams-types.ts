@@ -421,10 +421,30 @@ declare class StackTrace {
   public toString(): string;
 }
 
+/**
+ * スタックをさかのぼることがあるInvokableの実装です。
+ */
 declare abstract class StopInvokable extends Invokable {
+  /**
+   * さかのぼったスタックの配列
+   *
+   * @protected
+   * @type {StackTrace[]}
+   * @memberof StopInvokable
+   */
   protected stackTraces: StackTrace[];
+  /**
+   * スタックをさかのぼった時に、さかのぼった回数呼ばれます。
+   * @param stackTrace さかのぼったスタック
+   */
   public addStackTrace(stackTrace: StackTrace): void;
+  /**
+   * デバッグ用です。いまいちメソッドの存在意義がわからん。
+   */
   public getTraceString(): string;
+  /**
+   * このInvokableがスタックをさかのぼる際のヒントとなる文字列
+   */
   public abstract getStopId(): string;
 }
 
