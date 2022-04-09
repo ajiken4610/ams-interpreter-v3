@@ -176,7 +176,7 @@ declare class NamespacedVariable<T> extends VariableMap<T> {
    * @type {{ [key: string]: VariableMap<T> }}
    * @memberof NamespacedVariable
    */
-  protected namespacecVariableMaps: { [key: string]: VariableMap<T> };
+  protected namespacedVariableMaps: { [key: string]: VariableMap<T> };
   /**
    * インポートされた名前空間
    *
