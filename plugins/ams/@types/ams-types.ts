@@ -448,18 +448,56 @@ declare abstract class StopInvokable extends Invokable {
 }
 
 declare class Paragraph extends Invokable {
+  /**
+   * メモ化されていないやつ。
+   *
+   * @private
+   * @type {((string | null)[])}
+   * @memberof Paragraph
+   */
   private notLoaded: (string | null)[];
+  /**
+   * 文字列イテレータからインスタンスを初期化します。
+   * @param iterator
+   */
   public constructor(iterator: StringIterator);
+  /**
+   * 指定されたインデックスの子供を返します。
+   * @param index 返す子供のインデックス
+   */
   public getAt(index: number): Invokable | null;
+  /**
+   * Paragraphを呼び出します。
+   * @param argument 呼び出しの引数
+   * @param variables 変数のマップ
+   */
   public invoke(argument: Invokable, variables: VariableMap<Invokable>);
+  /**
+   * 一番最後に子要素を追加します。
+   * @param invokable
+   */
   public append(invokable: Invokable): void;
+  /**
+   * プレーンテキストとしてParagraphを呼び出します。
+   * @param argument
+   * @param variables
+   */
   public invokeAsPlainText(
     argument: Invokable,
     variables: VariableMap<Invokable>
   ): string;
+  /**
+   * HtmlObjectとしてParagraphを呼び出します。
+   * @param argument
+   * @param variables
+   */
   public invokeAsHtmlObject(
     argument: Invokable,
     variables: VariableMap<Invokable>
   ): HtmlObject;
+  /**
+   * インスタンスの構造文字列を取得します。
+   * @param indentOffset 改行直後に入るインデント文字
+   */
   public getStructureString(indentOffset: string);
 }
