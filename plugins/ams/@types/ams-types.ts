@@ -384,12 +384,16 @@ declare abstract class Invokable {
    * このインスタンスを生テキストとして呼び出します。
    * @param variables 呼び出し時の変数
    */
-  public abstract invokeAsPlainText(variables: VariableMap<Invokable>): string;
+  public abstract invokeAsPlainText(
+    argument: Invokable,
+    variables: VariableMap<Invokable>
+  ): string;
   /**
    * このインスタンスをHtmlのオブジェクトとして呼び出します。
    * @param variables 呼び出し時の変数
    */
   public abstract invokeAsHtmlObject(
+    argument: Invokable,
     variables: VariableMap<Invokable>
   ): HtmlObject;
 }
