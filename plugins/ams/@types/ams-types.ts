@@ -401,13 +401,12 @@ declare abstract class Invokable {
 /**
  * スタックとレースを表します。
  */
-declare class StackTrace {
+declare class Stack {
   /**
    * スタックの位置を表します。
    *
    * @private
    * @type {((string | number)[])}
-   * @memberof StackTrace
    */
   private position: (string | number)[];
   /**
@@ -432,12 +431,12 @@ declare abstract class StopInvokable extends Invokable {
    * @type {StackTrace[]}
    * @memberof StopInvokable
    */
-  protected stackTraces: StackTrace[];
+  protected stackTraces: Stack[];
   /**
    * スタックをさかのぼった時に、さかのぼった回数呼ばれます。
    * @param stackTrace さかのぼったスタック
    */
-  public addStackTrace(stackTrace: StackTrace): void;
+  public addStack(stack: Stack): void;
   /**
    * さかのぼったスタックを改行区切りで返します。
    */
