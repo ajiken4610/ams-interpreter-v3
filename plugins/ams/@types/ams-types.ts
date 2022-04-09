@@ -439,7 +439,7 @@ declare abstract class StopInvokable extends Invokable {
    */
   public addStackTrace(stackTrace: StackTrace): void;
   /**
-   * デバッグ用です。いまいちメソッドの存在意義がわからん。
+   * さかのぼったスタックを改行区切りで返します。
    */
   public getTraceString(): string;
   /**
