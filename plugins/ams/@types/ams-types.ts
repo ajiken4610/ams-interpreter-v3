@@ -443,7 +443,7 @@ declare abstract class StopInvokable extends Invokable {
    */
   public getTraceString(): string;
   /**
-   * このInvokableがスタックをさかのぼる際のヒントとなる文字列
+   * このInvokableがスタックをさかのぼる際のヒントとなる一意の文字列
    */
   public abstract getStopId(): string;
 }
