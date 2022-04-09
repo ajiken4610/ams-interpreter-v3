@@ -351,7 +351,10 @@ declare abstract class Invokable {
    * @param argument 呼び出しの引数
    * @param variables 呼び出し時の変数
    */
-  public invoke(argument: Invokable, variables: VariableMap<Invokable>);
+  public abstract invoke(
+    argument: Invokable,
+    variables: VariableMap<Invokable>
+  );
   /**
    * 子要素をインデックスをもとに返します。
    * @param index
