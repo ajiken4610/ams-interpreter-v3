@@ -1,4 +1,4 @@
-export class StackTrace {
+export class Stack {
   private position: (string | number)[];
   public constructor(position: (string | number)[]) {
     this.position = position;
