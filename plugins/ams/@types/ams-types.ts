@@ -403,7 +403,8 @@ declare abstract class Invokable {
  */
 declare class Stack {
   /**
-   * スタックの位置を表します。
+   * スタックの位置。
+   * [a,b,c]とあったら、"a:b:c"となる。「Main.java:25:52」みたいな。
    *
    * @private
    * @type {((string | number)[])}
